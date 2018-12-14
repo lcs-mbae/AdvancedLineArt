@@ -6,13 +6,13 @@ void setup() {
 
   // create the canvas
   // WIDTH  HEIGHT
-  size(800, 530); 
+  size(272, 185); 
 
   // make the backgound white
   background(255);
 
-  // load "van.JPG" from the "data" folder into source object 
-  source = loadImage("van.JPG");
+  // load "download-1.jpg" from the "data" folder into source object 
+  source = loadImage("download-1.jpg");
 
   // we want to manipulate the pixels of this image directly
   // creates an array named "source.pixels"
@@ -23,10 +23,10 @@ void setup() {
   source.loadPixels();
 
   // loop from first pixel, at position 0, to final pixel, at position 423,999
-  for (int position = 0; position <= 423999; position += 1) {
+  for (int position = 0; position <= 50319; position += 1) {
 
     // get brightness of current pixel
-    float b = brightness(source.pixels[position]);
+    float b = 255-brightness(source.pixels[position]);
 
     // change brightness value (range of 0 to 255) into a diameter of range 1 to 10 
     float diameter = map(b, 0, 255, 1, 10);
@@ -40,7 +40,7 @@ void setup() {
     // && Let's us check TWO conditions 
     // only run what's in the code block when BOTH conditions are true
     //     CONDITION1 AND CONDITION2
-    if ((x > 0) && (y > 0) && (y % 10 == 0) && (x % 10 == 0)) {
+    if ((x > 0) && (y > 0) && (y % 3 == 0) && (x % 3 == 0)) {
       
       // draw an ellipse at position of current pixel
       ellipse (x, y, diameter, diameter);
@@ -48,6 +48,7 @@ void setup() {
   }
   
   }
+  save("output");
 }
 
 // draw() runs repeatedly until we tell it to stop
